@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace Utility{
   class GDebug{
@@ -20,7 +21,7 @@ namespace Utility{
 		/// </summary>
 		/// <param name="message"> String or object to be converted to string representation for display.</param>
 		/// <param name="obj">Object to which the message applies.</param>
-    public static void Log(string message, Object obj){
+    public static void Log(string message, UnityEngine.Object obj){
       if(DEBUGMODE){
         Debug.Log(message, obj);
       }
@@ -41,6 +42,18 @@ namespace Utility{
 		}
 
     /// <summary>
+	  /// Logs a message to the Unity Console if debug mode is enabled
+	  /// </summary>
+	  /// <param name="message">String or object to be converted to string representation for display.</param>
+	  /// <param name="classObject">Object who sent the message log.</param>
+	  /// <param name="functionName">Name of Function who sent the message log.</param>
+    public static void Log(string message, UnityEngine.Object classObject, string functionName){
+      if(DEBUGMODE){
+				Debug.Log(classObject.GetType().Name + "::" + functionName + "() // " + message);
+			}
+    }
+
+    /// <summary>
 	  /// Logs an error message to the Unity Console if debug mode is enabled.
 	  /// </summary>
 	  /// <param name="message"> String or object to be converted to string representation for display.</param>
@@ -55,9 +68,20 @@ namespace Utility{
 		/// </summary>
 		/// <param name="message"> String or object to be converted to string representation for display.</param>
 		/// <param name="obj">Object to which the message applies.</param>
-    public static void LogError(string message, Object obj){
+    public static void LogError(string message, UnityEngine.Object obj){
       if(DEBUGMODE){
 				Debug.LogError(message, obj);
+			}
+    }
+    /// <summary>
+	  /// Logs an Error message to the Unity Console if debug mode is enabled
+	  /// </summary>
+	  /// <param name="message">String or object to be converted to string representation for display.</param>
+	  /// <param name="classObject">Object who sent the message log.</param>
+	  /// <param name="functionName">Name of Function who sent the message log.</param>
+    public static void LogError(string message, UnityEngine.Object classObject, string functionName){
+      if(DEBUGMODE){
+				Debug.LogError(classObject.GetType().Name + "::" + functionName + "() // " + message);
 			}
     }
 
@@ -90,9 +114,21 @@ namespace Utility{
 		/// </summary>
 		/// <param name="message"> String or object to be converted to string representation for display.</param>
 		/// <param name="obj">Object to which the message applies.</param>
-    public static void LogWarning(string message, Object obj){
+    public static void LogWarning(string message, UnityEngine.Object obj){
       if(DEBUGMODE){
 				Debug.LogWarning(message, obj);
+			}
+    }
+
+    /// <summary>
+	  /// Logs a warning message to the Unity Console if debug mode is enabled
+	  /// </summary>
+	  /// <param name="message">String or object to be converted to string representation for display.</param>
+	  /// <param name="classObject">Object who sent the message log.</param>
+	  /// <param name="functionName">Name of Function who sent the message log.</param>
+    public static void LogWarning(string message, UnityEngine.Object classObject, string functionName){
+      if(DEBUGMODE){
+				Debug.Log(classObject.GetType().Name + "::" + functionName + "() // " + message);
 			}
     }
 

@@ -128,7 +128,7 @@ namespace Utility{
 	  /// <param name="functionName">Name of Function who sent the message log.</param>
     public static void LogWarning(string message, UnityEngine.Object classObject, string functionName){
       if(DEBUGMODE){
-				Debug.Log(classObject.GetType().Name + "::" + functionName + "() // " + message);
+				Debug.LogWarning(classObject.GetType().Name + "::" + functionName + "() // " + message);
 			}
     }
 
@@ -144,5 +144,12 @@ namespace Utility{
 			}
     }
 
+    #region VisualGizmos
+    public static void DrawRay(Vector3 start, Vector3 dir, Color color){
+      if(DEBUGMODE){
+        Debug.DrawRay(start, dir, color);
+      }
+    }
+    #endregion
   }
 }
